@@ -1,0 +1,11 @@
+# Build and start the A3 app (run inside the app folder):
+#   docker compose up -d --build
+# Then open http://<server-ip>:8051   (A2 already uses port 8050 on the VM)
+services:
+  a3-app:
+    build: .
+    image: st125973-a3-app:latest
+    container_name: st125973-a3-app
+    ports:
+      - "${A3_PORT:-8051}:8050"     # <VM port>:<container port>
+    restart: unless-stopped
